@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ExperienceInfo.Models.CategoryModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Skills managing</h2>
+
+<p>
+    @Html.ActionLink("Create New Category", "Create")
+</p>
+<table>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => category.CategoryName)
+            </th>
+            <td>
+                @Html.ActionLink("Add skill", "AddSkill", new {id = category.CategoryId}) |
+                @Html.ActionLink("Edit", "Edit", new { id = category.CategoryId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = category.CategoryId })
+            </td>
+        </tr>
+        foreach (var skill in category.Skills)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(s => skill.SkillName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditSkill", new {id = skill.SkillId}) |
+                @Html.ActionLink("Delete", "DeleteSkill", new {id = skill.SkillId})
+            </td>
+        </tr>
+        }
+    }
+</table>

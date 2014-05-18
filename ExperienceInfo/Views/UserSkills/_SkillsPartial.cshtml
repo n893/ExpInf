@@ -1,0 +1,27 @@
+﻿@model ExperienceInfo.Models.SkillCatalogModel
+@using (Html.BeginForm("Add", "UserSkills", FormMethod.Post))
+{
+    if (Model.Skills != null && Model.Skills.Any())
+    {
+    @*<table>
+        <tr>
+            <td>*@
+                @Html.DropDownListFor(model => model.SelectedSkill, new SelectList(Model.Skills, "SkillId", "SkillName"), string.Empty)
+                @Html.ValidationMessageFor(model => model.SelectedSkill, "ololo!!")
+@*            </td>
+        </tr>
+        <tr>
+            <td>*@
+                @Html.DropDownListFor(model => model.SelectedMark, new SelectList(new[] { 1, 2, 3, 4, 5 }))
+@*            </td>
+        </tr>
+    </table>*@
+    <p>
+        <input type="submit" value="Add" name="Add" />
+    </p>
+    }
+    else
+    {
+    <span>Select category first</span>
+    }
+}

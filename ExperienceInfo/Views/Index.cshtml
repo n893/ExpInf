@@ -1,0 +1,36 @@
+﻿@model ExperienceInfo.Models.SearchModel
+@using (Html.BeginForm("Search", "Search", FormMethod.Post))
+{
+    {
+        ViewBag.Title = "Search";
+    }
+    <h2>Specify minimal skills:</h2>
+    <table>
+        @for (var i = 0; i < Model.Categories.Count; i++)
+        {
+            @Html.HiddenFor(m => Model.Categories[i].CategoryId)
+            @Html.HiddenFor(m => Model.Categories[i].CategoryName)
+            <tr>
+                <th>
+                    @Html.DisplayFor(cat => Model.Categories[i].CategoryName)
+                </th>
+            </tr>
+            for (var j = 0; j < Model.Categories[i].Skills.Count; j++)
+            {
+                @Html.HiddenFor(skill => Model.Categories[i].Skills[j].SkillName)
+                @Html.HiddenFor(skill => Model.Categories[i].Skills[j].SkillId)
+                <tr>
+                    <td>
+                        @Html.DisplayFor(skill => Model.Categories[i].Skills[j].SkillName)
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(skill => Model.Categories[i].Skills[j].Mark, new SelectList(new[] {0, 1, 2, 3, 4, 5}, 0))
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+    <p>
+        <input type="submit" name="Search" value="Search" />
+    </p>
+}

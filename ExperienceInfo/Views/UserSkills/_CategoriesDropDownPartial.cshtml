@@ -1,0 +1,18 @@
+﻿@model ExperienceInfo.Models.CategoryModel
+@if (Model != null)
+{
+    using (Ajax.BeginForm("SelectCategory", "UserSkills", new AjaxOptions { UpdateTargetId = "Skills" }))
+    { 
+    //@Html.HiddenFor(m => m.SelectedCategoryId)
+    @Html.DropDownListFor(
+            m => m.CategoryName,
+            new SelectList(Model.Skills, "Id", "Name"),
+            string.Empty
+            )
+    }
+}
+<script type="text/javascript">
+    $('#SelectedSubCategoryId').change(function () {
+        $(this).parents('form').submit();
+    });   
+</script>

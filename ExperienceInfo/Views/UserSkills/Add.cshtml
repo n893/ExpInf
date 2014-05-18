@@ -1,0 +1,17 @@
+﻿@model ExperienceInfo.Models.SkillCatalogModel
+
+<h2>@ViewBag.Title</h2>
+<table>
+    <tr>
+        <td>Category </td>
+        <td>:</td>
+        <td>@Html.Partial("_CategoriesPartial", Model)</td>
+    </tr>
+    <tr>
+        <td valign="top">Skills </td>
+        <td valign="top">&#58;</td>
+        <td>
+            <div id="Skills">@Html.Partial("_SkillsPartial", Model)</div>
+        </td>
+    </tr>
+</table>

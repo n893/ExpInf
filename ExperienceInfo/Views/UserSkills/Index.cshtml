@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ExperienceInfo.Models.SkillsModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your skills:</h2>
+
+<p>
+    @Html.ActionLink("Add new skill", "Add")
+</p>
+<table>
+    @*    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th></th>
+    </tr>*@
+
+    @foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </th>
+            @*        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CategoryId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
+        </td>*@
+        </tr>
+        foreach (var skill in item.Skills)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(skillItem => skill.SkillName) 
+                </td>
+                <td>
+                    @Html.DisplayFor(model => skill.Mark)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = skill.SkillId})
+                </td>
+                <td>
+                    @Html.ActionLink("Remove skill", "Remove", new { id = skill.SkillId})
+                </td>
+            </tr>
+        }
+    }
+</table>
+@*<h4>Adding new skill</h4>
+<table>
+    <tr>
+        @Html.ActionLink("Add new", "Add")
+    </tr>
+</table>*@
+
+    

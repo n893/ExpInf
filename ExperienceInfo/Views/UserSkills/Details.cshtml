@@ -1,0 +1,22 @@
+﻿@model ExperienceInfo.Models.SkillModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>SkillModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SkillName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SkillName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.SkillId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,15 @@
+﻿@model ExperienceInfo.Models.SkillCatalogModel
+
+@using (Ajax.BeginForm("SelectCategory", "UserSkills", new AjaxOptions { UpdateTargetId = "Skills" }))
+{ 
+    @Html.DropDownListFor(
+            m => m.SelectedCategory,
+            new SelectList(Model.Categories, "CategoryId", "CategoryName"),
+           string.Empty
+        )
+}
+<script type="text/javascript">
+    $('#SelectedCategory').change(function () {
+        $(this).parents('form').submit();
+    });
+</script>

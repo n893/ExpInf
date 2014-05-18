@@ -1,0 +1,31 @@
+﻿@using ExperienceInfo.Models
+@model List<ExperienceInfo.Models.UserSkills>
+
+@{
+    ViewBag.Title = "title";
+}
+<h2>Found users details</h2>
+
+<table>
+    @foreach (UserSkills user in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(u => user.UserName)
+            </th>
+        </tr>
+        foreach (var skill in user.Skills)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(s => skill.SkillName)
+            </td>
+            <td>
+                @Html.DisplayFor(s => skill.Mark)
+            </td>
+        </tr>
+        }
+    }
+
+</table>
+

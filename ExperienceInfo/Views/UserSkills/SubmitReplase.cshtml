@@ -1,0 +1,25 @@
+﻿@model ExperienceInfo.Models.SubmittingUserSkill
+@using (Html.BeginForm("SubmitSkillReplace", "UserSkills", FormMethod.Post))
+{
+    {
+        ViewBag.Title = "Submit changing mark";
+    }
+    @Html.HiddenFor(m => m.SkillId)
+    @Html.HiddenFor(m => m.NewMark)
+    <h2>Submit changing mark</h2>
+    <table>
+        <tr>
+            <td>Skill @Html.DisplayFor(model => model.SkillName) already have mark of @Html.DisplayFor(model => model.ExistedMark)
+            </td>
+        </tr>
+        <tr>
+            <td>Do you want to change mark to @Html.DisplayFor(model => model.NewMark)?
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Yes" name="SubmitSkillReplace" />
+            </td>
+        </tr>
+    </table>
+}

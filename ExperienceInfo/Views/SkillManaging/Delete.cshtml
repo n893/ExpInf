@@ -1,0 +1,20 @@
+﻿@model ExperienceInfo.Models.CategoryModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Category?</h2>
+
+<fieldset>
+    <legend>CategoryModel</legend>
+    <div>
+         @Html.DisplayNameFor(model => model.CategoryName) is @Html.DisplayFor(model => model.CategoryName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

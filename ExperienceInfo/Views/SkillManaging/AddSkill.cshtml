@@ -1,0 +1,19 @@
+﻿@model ExperienceInfo.Models.SkillAddModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>Adding new skill</h2>
+@using (Html.BeginForm())
+{
+        @Html.HiddenFor(m => m.CategoryId);
+        @Html.ValidationSummary(true)
+        @Html.EditorFor(model => model.SkillName)
+        <p>
+            <input type="submit" value="Add Skill" name="AddSkill" />
+        </p>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,20 @@
+﻿@model List<ExperienceInfo.Models.FoundUser>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>Users who meet the selection:</h2>
+<table>
+@foreach (var user in Model)
+{
+    <tr>
+        <th>
+            @Html.DisplayFor(m => user.UserName)
+        </th>
+        <td>
+            @Html.DisplayFor(m => user.Email)
+        </td>
+    </tr>
+}
+</table>

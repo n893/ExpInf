@@ -1,0 +1,37 @@
+﻿@model ExperienceInfo.Models.EditMark
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit skill mark</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SkillModel</legend>
+
+        @Html.HiddenFor(model => model.SkillId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SkillName, new { style="display:inline;"}): @Html.DisplayFor(model => model.SkillName)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Mark, new SelectList(new[] {1,2,3,4,5}, Model.Mark))
+            @Html.ValidationMessageFor(model => model.Mark)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
