@@ -79,8 +79,9 @@ namespace ExperienceInfo.Controllers
             if (categoryDetails != null)
             {
                 category.CategoryName = categoryDetails.CategoryName;
+				return View(category);
             }
-            return View(category);
+			return RedirectToAction("Index");
         }
 
         [HttpPost]
