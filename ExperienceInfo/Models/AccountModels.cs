@@ -4,25 +4,25 @@ using System.Data.Entity;
 
 namespace ExperienceInfo.Models
 {
-    public class UsersContext : DbContext
-    {
-        public UsersContext()
-            : base("DefaultConnection")
-        {
-        }
+	//public class UsersContext : DbContext
+	//{
+	//	public UsersContext()
+	//		: base("DataContract.SkillInfoContext") // todo: DefaultConnection was replaced
+	//	{
+	//	}
 
-        public DbSet<UserProfile> UserProfiles { get; set; }
-    }
+	//	public DbSet<UserProfile> UserProfiles { get; set; }
+	//}
 
-    [Table("UserProfile")]
-    public class UserProfile
-    {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-        public string Email { get; set; }
-    }
+	//[Table("UserProfile")]
+	//public class UserProfile
+	//{
+	//	[Key]
+	//	[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+	//	public int UserId { get; set; }
+	//	public string UserName { get; set; }
+	//	public string Email { get; set; }
+	//}
 
     public class RegisterExternalLoginModel
     {
@@ -41,7 +41,7 @@ namespace ExperienceInfo.Models
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
         public string NewPassword { get; set; }
@@ -74,7 +74,7 @@ namespace ExperienceInfo.Models
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }

@@ -2,20 +2,23 @@
 using System.Linq;
 using System.Web.Mvc;
 using DAL;
+using DataContract;
 using ExperienceInfo.Models;
 
 namespace ExperienceInfo.Controllers
 {
-    [Authorize(Roles = "manager")]
+    //[Authorize(Roles = "manager")]
     public class SearchController : Controller
     {
         private readonly ISkillRepository _skillRepository;
         private readonly ICategoryRepository _categoryRepository;
+		private readonly SearchRepository _searchR;
 
-        public SearchController(ISkillRepository skillRepository, ICategoryRepository categoryRepository)
+		public SearchController(ISkillRepository skillRepository, ICategoryRepository categoryRepository, SearchRepository searchR)
         {
             _skillRepository = skillRepository;
             _categoryRepository = categoryRepository;
+			_searchR = searchR;
         }
 
         public ActionResult Index()
@@ -48,42 +51,24 @@ namespace ExperienceInfo.Controllers
         [HttpPost]
         public ActionResult Search(SearchModel model)
         {
-            var skills = new List<SkillToSearch>();
-            foreach (var cat in model.Categories)
-            {
-                foreach (var s in cat.Skills)
+	        var conditions = new List<KeyValuePair<int, int>>();
+	        foreach (var cat in model.Categories.Where(cat => cat.Skills != null))
+	        {
+		        foreach (var s in cat.Skills)
                 {
                     if (s.Mark > 0)
                     {
-                        skills.Add(new SkillToSearch
-                                       {
-                                           SkillId = s.SkillId,
-                                           MinMark = s.Mark
-                                       });
+                        conditions.Add(new KeyValuePair<int, int>(s.SkillId, s.Mark));
                     }
                 }
-            }
-            var userSkills = _skillRepository.GetAllUserSkills();
-            IEnumerable<int> users =
-                userSkills.Join(skills, skill => skill.SkillId, search => search.SkillId,
-                                (skill, src) => new {skill, src.MinMark})
-                          .Where(arg => arg.skill.Mark >= arg.MinMark)
-                          .GroupBy(grp => grp.skill.UserId)
-                          .Where(grouping => grouping.Count() == skills.Count)
-                          .Select(grouping => grouping.Key);
-            var foundUsers = new List<FoundUser>();
+	        }
+			var userProfiles = _searchR.GetUsers(conditions);
 
-            var dbContext = new UsersContext();
-            foreach (var userId in users)
-            {
-                var u = dbContext.UserProfiles.Find(userId);
-                foundUsers.Add(new FoundUser
-                                   {
-                                       UserId = u.UserId,
-                                       Email = u.Email,
-                                       UserName = u.UserName
-                                   });
-            }
+			var foundUsers = new List<FoundUser>();
+			foreach (var usr in userProfiles)
+			{
+				foundUsers.Add(new FoundUser {UserId = usr.UserId, Email = usr.Email, UserName = usr.UserName});
+			}
             return View(foundUsers);
         }
     }

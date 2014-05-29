@@ -9,7 +9,7 @@ using WebMatrix.WebData;
 
 namespace ExperienceInfo.Controllers
 {
-    [InitializeSimpleMembership]
+    //[InitializeSimpleMembership]
     [Authorize]
     public class UserSkillsController : Controller
     {

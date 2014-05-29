@@ -20,11 +20,12 @@ namespace ExperienceInfo.ControllerFactories
             _ninjectKernel.Bind<ICategoryRepository>().To<CategoryRepository>();
         }
 
-        protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, Type controllerType)
-        {
-            return controllerType == null
-                       ? null
-                       : (IController) _ninjectKernel.Get(controllerType);
-        }
+	    protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext,
+		    Type controllerType)
+	    {
+		    return controllerType == null
+			    ? null
+			    : (IController) _ninjectKernel.Get(controllerType);
+	    }
     }
 }

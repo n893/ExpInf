@@ -13,5 +13,6 @@ namespace DataContract
         public int Mark { get; set; }
 
         public virtual Skill Skill { get; set; }
+		public virtual UserProfile UserProfile { get; set; }
     }
 }
