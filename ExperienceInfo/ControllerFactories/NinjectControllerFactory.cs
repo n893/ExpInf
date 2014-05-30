@@ -18,6 +18,7 @@ namespace ExperienceInfo.ControllerFactories
         {
             _ninjectKernel.Bind<ISkillRepository>().To<SkillRepository>();
             _ninjectKernel.Bind<ICategoryRepository>().To<CategoryRepository>();
+	        _ninjectKernel.Bind<ISearchRepository>().To<SearchRepository>();
         }
 
 	    protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext,

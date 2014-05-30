@@ -2,19 +2,18 @@
 using System.Linq;
 using System.Web.Mvc;
 using DAL;
-using DataContract;
 using ExperienceInfo.Models;
 
 namespace ExperienceInfo.Controllers
 {
-    //[Authorize(Roles = "manager")]
+    [Authorize(Roles = "manager")]
     public class SearchController : Controller
     {
         private readonly ISkillRepository _skillRepository;
         private readonly ICategoryRepository _categoryRepository;
-		private readonly SearchRepository _searchR;
+		private readonly ISearchRepository _searchR;
 
-		public SearchController(ISkillRepository skillRepository, ICategoryRepository categoryRepository, SearchRepository searchR)
+		public SearchController(ISkillRepository skillRepository, ICategoryRepository categoryRepository, ISearchRepository searchR)
         {
             _skillRepository = skillRepository;
             _categoryRepository = categoryRepository;

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryRepository.cs" />
+    <Compile Include="ISearchRepository.cs" />
     <Compile Include="ISkillRepository.cs" />
     <Compile Include="ICategoryRepository.cs" />
     <Compile Include="SearchRepository.cs" />

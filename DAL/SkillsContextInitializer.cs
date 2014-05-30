@@ -5,7 +5,7 @@ using WebMatrix.WebData;
 
 namespace DAL
 {
-	public class SkillsContextInitializer : DropCreateDatabaseAlways<SkillInfoContext>
+	public class SkillsContextInitializer : DropCreateDatabaseIfModelChanges<SkillInfoContext>
 	{
 		protected override void Seed(SkillInfoContext context)
 		{

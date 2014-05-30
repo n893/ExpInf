@@ -4,7 +4,7 @@ using DataContract;
 
 namespace DAL
 {
-	public class SearchRepository
+	public class SearchRepository : ISearchRepository
 	{
 		private readonly SkillInfoContext _context;
 
