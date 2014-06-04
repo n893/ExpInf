@@ -131,13 +131,43 @@ namespace ExperienceInfo.Controllers
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : "";
-            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+	        var userId = WebSecurity.GetUserId(User.Identity.Name);
+	        ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(userId);
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
         }
 
         //
-        // POST: /Account/Manage
+		// POST: /Account/ManageBirthday
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult ManageBirthday(BirthdayModel model)
+	    {
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					using (SkillInfoContext db = new SkillInfoContext())
+					{
+						// Set Birthday date to the current user
+						var user = db.UserProfiles.FirstOrDefault(u => u.UserName == User.Identity.Name);
+						if (user != null)
+						{
+							user.Birthday = model.Date;
+						}
+						db.SaveChanges();
+					}
+					return RedirectToAction("Index", "Home");
+				}
+				catch
+				{}
+			}
+			return View("Manage");
+	    }
+
+		//
+		// POST: /Account/Manage
 
         [HttpPost]
         [ValidateAntiForgeryToken]

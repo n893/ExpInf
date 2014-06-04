@@ -1,0 +1,17 @@
+﻿@model ExperienceInfo.Models.BirthdayModel
+
+<h3>Set Birthday</h3>
+
+@using (Html.BeginForm("ManageBirthday", "Account"))
+{
+	@Html.AntiForgeryToken()
+	@Html.ValidationSummary()
+
+	<fieldset>
+		<legend>Set Birthday Form</legend>
+		@Html.LabelFor(m => m.Date)
+		@Html.TextBoxFor(model => model.Date, new { type = "date" })
+		<br/>
+		<input type="submit" value="Save date" />
+	</fieldset>
+}

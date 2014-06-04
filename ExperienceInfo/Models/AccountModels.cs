@@ -1,28 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ExperienceInfo.Models
 {
-	//public class UsersContext : DbContext
-	//{
-	//	public UsersContext()
-	//		: base("DataContract.SkillInfoContext") // todo: DefaultConnection was replaced
-	//	{
-	//	}
-
-	//	public DbSet<UserProfile> UserProfiles { get; set; }
-	//}
-
-	//[Table("UserProfile")]
-	//public class UserProfile
-	//{
-	//	[Key]
-	//	[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-	//	public int UserId { get; set; }
-	//	public string UserName { get; set; }
-	//	public string Email { get; set; }
-	//}
+	public class BirthdayModel
+	{
+		public int UserId { get; set; }
+		[Display(Name = "Birthday date")]
+		public DateTime Date { get; set; }
+	}
 
     public class RegisterExternalLoginModel
     {
