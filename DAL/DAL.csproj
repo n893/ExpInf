@@ -53,10 +53,12 @@
     <Compile Include="ISearchRepository.cs" />
     <Compile Include="ISkillRepository.cs" />
     <Compile Include="ICategoryRepository.cs" />
+    <Compile Include="IUserRepository.cs.cs" />
     <Compile Include="SearchRepository.cs" />
     <Compile Include="SkillRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SkillsContextInitializer.cs" />
+    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BL\DataContract.csproj">

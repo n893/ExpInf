@@ -15,6 +15,15 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "ACloude", "ACloude\ACloude.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerRoleWithSBQueue", "WorkerRoleWithSBQueue\WorkerRoleWithSBQueue.csproj", "{F0DC053E-07BB-4C98-B38C-07AE5E896B83}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8BC451FA-7442-4B53-B56C-648F3F48A63A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerRoleA", "WorkerRoleA\WorkerRoleA.csproj", "{A362FF64-E9B3-4FEC-9D92-1D87D6941041}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +54,10 @@ Global
 		{F0DC053E-07BB-4C98-B38C-07AE5E896B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0DC053E-07BB-4C98-B38C-07AE5E896B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0DC053E-07BB-4C98-B38C-07AE5E896B83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A362FF64-E9B3-4FEC-9D92-1D87D6941041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A362FF64-E9B3-4FEC-9D92-1D87D6941041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A362FF64-E9B3-4FEC-9D92-1D87D6941041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A362FF64-E9B3-4FEC-9D92-1D87D6941041}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

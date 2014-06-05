@@ -37,6 +37,14 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WorkerRoleA\WorkerRoleA.csproj">
+      <Name>WorkerRoleA</Name>
+      <Project>{a362ff64-e9b3-4fec-9d92-1d87d6941041}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>WorkerRoleA</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
     <ProjectReference Include="..\WorkerRoleWithSBQueue\WorkerRoleWithSBQueue.csproj">
       <Name>WorkerRoleWithSBQueue</Name>
       <Project>{f0dc053e-07bb-4c98-b38c-07ae5e896b83}</Project>
@@ -47,12 +55,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Profiles" />
+    <Folder Include="WorkerRoleAContent\" />
     <Folder Include="WorkerRoleWithSBQueueContent\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="WorkerRoleAContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="WorkerRoleWithSBQueueContent\diagnostics.wadcfg">
       <SubType>Content</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\ExpInfoServiceProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

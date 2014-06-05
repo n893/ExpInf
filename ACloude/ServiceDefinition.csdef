@@ -7,5 +7,16 @@
     <ConfigurationSettings>
       <Setting name="Microsoft.ServiceBus.ConnectionString" />
     </ConfigurationSettings>
+    <LocalResources>
+    </LocalResources>
+  </WorkerRole>
+  <WorkerRole name="WorkerRoleA" vmsize="Small">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <LocalResources>
+    </LocalResources>
+    <ConfigurationSettings>
+    </ConfigurationSettings>
   </WorkerRole>
 </ServiceDefinition>
