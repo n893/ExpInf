@@ -5,6 +5,8 @@ using DAL;
 using ExperienceInfo.Filters;
 using ExperienceInfo.Models;
 using DataContract;
+using Microsoft.ServiceBus.Messaging;
+using Microsoft.WindowsAzure;
 using WebMatrix.WebData;
 
 namespace ExperienceInfo.Controllers
@@ -121,6 +123,8 @@ namespace ExperienceInfo.Controllers
                         return RedirectToAction("Add");
                     }
                     _skillRepository.AddUserSkill((int) skillCatalogModel.SelectedSkill, userID, (int) skillCatalogModel.SelectedMark);
+					//todo: send update msg
+	                sendUpdateMsg();
                 }      
             }
             return RedirectToAction("Index");
@@ -133,6 +137,8 @@ namespace ExperienceInfo.Controllers
             {
                 var userId = WebSecurity.CurrentUserId;
                 _skillRepository.UpdateUserSkill(userSkill.SkillId, userId, userSkill.NewMark);
+				//todo: send update msg
+	            sendUpdateMsg();
             }
             return RedirectToAction("Index");
         }
@@ -141,6 +147,7 @@ namespace ExperienceInfo.Controllers
         {
             var userId = WebSecurity.CurrentUserId;
             _skillRepository.DeleteUserSkill(userId, id);
+			sendUpdateMsg();
             return RedirectToAction("Index");
         }
 
@@ -166,7 +173,15 @@ namespace ExperienceInfo.Controllers
         {
             var userId = WebSecurity.CurrentUserId;
             _skillRepository.UpdateUserSkill(editMark.SkillId, userId, editMark.Mark);
+			sendUpdateMsg();
             return RedirectToAction("Index");
         }
+
+	    private void sendUpdateMsg()
+	    {
+			string connectionString = CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+			QueueClient client = QueueClient.CreateFromConnectionString(connectionString, "UpdQueue");
+			client.Send(new BrokeredMessage());
+	    }
     }
 }

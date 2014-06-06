@@ -10,9 +10,15 @@
             <p>
                 If you are IT specialist - fill your professional skills @Html.ActionLink("here", "Index", "UserSkills").
             </p>
-            <p>
-                If you have manager account - you`re allowed to @Html.ActionLink("create & edit", "Index", "SkillManaging") skills, and @Html.ActionLink("search", "Index", "Search") for users that satisfy your requirements. 
-            </p>
+	        <p>
+		        If you have manager account - you`re allowed to @Html.ActionLink("create & edit", "Index", "SkillManaging") skills, and @Html.ActionLink("search", "Index", "Search") for users that satisfy your requirements. 
+	        </p>
+			@if (!string.IsNullOrWhiteSpace(ViewBag.TopUser))
+			{
+				<p>
+					"Top-skilled" user of the site is @ViewBag.TopUser. He's on top for already @ViewBag.TopDays day(s)!
+				</p>
+			}
         </div>
     </section>
 }
